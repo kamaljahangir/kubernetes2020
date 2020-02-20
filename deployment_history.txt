@@ -1,0 +1,206 @@
+    1  ifco
+    2  ip a
+    3  hostnamectl set-hostname station38.example.com
+    4  exit
+    5  ip a
+    6  hostnamectl set-hostname master.example.com
+    7  exit
+    8  firewall-cmd --add-port=0-65535/tcp --permanent
+    9  firewall-cmd --add-port=0-65535/udp  --permanent
+   10  firewall-cmd --reload
+   11  history 
+   12  setenforce 0
+   13  sed -i 's/SELINUX=enforcing/SELINUX=disabled/'  /etc/selinux/config
+   14  modprobe br_netfilter
+   15  sysctl -a | grep ipv4
+   16  echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+   17  swapoff -a
+   18  vim /etc/fstab 
+   19  vi /etc/fstab 
+   20  vi /etc/yum.repos.d/a.repo
+   21  yum  install  docker kubeadm  -y
+   22  systemctl enable --now  docker kubelet
+   23  kubeadm  init --pod-network-cidr=192.168.0.0/16
+   24  mkdir -p $HOME/.kube
+   25  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   26  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   27  kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+   28  kubeadm get nodes
+   29  kubelet get nodes
+   30  kubectl get nodes
+   31  history 
+   32  scp /etc/kubernetes/admin.conf 192.168.10.241:
+   33  scp /etc/yum.repos.d/a.repo 192.168.10.241:/etc/yum.repos.d/
+   34  history >> master.txt
+   35  scp master.txt 192.168.10.31:/kube
+   36  vi /etc/sysconfig/network-scripts/ifcfg-eth0
+   37  kubectl get pods
+   38  kubectl get nodes
+   39  cat .bashrc 
+   40  history 
+   41  ip a
+   42  exit
+   43  yum install bash-completion
+   44  exit
+   45  kubectl run myapp --image=nginx
+   46  kubectl get pods
+   47  kubectl get pods -o label
+   48  kubectl get pods
+   49  kubectl create service nodeport myapp-8c99949c8-pvtxd
+   50  kubectl create service nodeport myapp-8c99949c8-pvtxd --tcp 8
+   51  kubectl get svc
+   52  kubectl describe svc
+   53  kubectl delete all
+   54  kubectl delete --all
+   55  ls
+   56  vim nginx.yml '
+   57  vim nginx.yml 
+   58  vi nginx.yml 
+   59  vi svc.yml
+   60  cp nginx.yml svc.yml
+   61  vi svc.yml
+   62  vi nginx.yml 
+   63  vi svc.yml
+   64  kubectl create -f nginx.yml 
+   65  kubectl create -f svc.yml 
+   66  vi svc.yml
+   67  kubectl create -f svc.yml 
+   68  kubectl get svc
+   69  kubectl describe svc
+   70  kubectl describe pod
+   71  vi svc.yml
+   72  kubectl create -f svc.yml 
+   73  kubectl get svc
+   74  kubectl get nodes
+   75  kubectl get pods
+   76  kubectl get deployment
+   77  kubectl delete deployment myapp 
+   78  kubectl get deployment
+   79  kubectl get pods
+   80  kubectl describe nodes 
+   81  kubectl describe nodes node1.example.com 
+   82  kubectl exec my-app bash
+   83  kubectl exec my-app date
+   84  kubectl exec -it my-app  /bin/bas
+   85  kubectl exec -it my-app  /bin/bash
+   86  kubectl log my-app 
+   87  kubectl logs my-app 
+   88  kubectl get pods -o wide
+   89  curl 192.168.11.68
+   90  kubectl logs my-app 
+   91  kubectl logs my-app my-nginx 
+   92  kubectl expose pod my-app --type=NodePort --port=80
+   93  kubectl get nodes
+   94  ls
+   95  vim deploy.yml
+   96  vi deploy.yml
+   97  kubectl get pods
+   98  vi deploy.yml
+   99  kubectl create -f deploy.yml 
+  100  vi deploy.yml
+  101  kubectl create -f deploy.yml 
+  102  vi deploy.yml
+  103  kubectl create -f deploy.yml 
+  104  cat deploy.yml 
+  105  vi deploy.yml 
+  106  kubectl create -f deploy.yml 
+  107  vi deploy.yml 
+  108  kubectl create -f deploy.yml 
+  109  vi deploy.yml 
+  110  kubectl create -f deploy.yml 
+  111  vi deploy.yml 
+  112  kubectl create -f deploy.yml 
+  113  vi deploy.yml 
+  114  kubectl create -f deploy.yml 
+  115  vi deploy.yml 
+  116  kubectl create -f deploy.yml 
+  117  vi deploy.yml 
+  118  kubectl create -f deploy.yml 
+  119  vi deploy.yml 
+  120  kubectl create -f deploy.yml 
+  121  vi deploy.yml 
+  122  kubectl create -f deploy.yml 
+  123  vi deploy.yml 
+  124  kubectl create -f deploy.yml 
+  125  kubectl get p
+  126  kubectl get pod
+  127  kubectl describe pod
+  128  kubectl get pod
+  129  #kubectl set image deployment my-deploy-nginx nginx
+  130  vi deploy.yml 
+  131  kubectl set image deployment my-deploy-nginx myapp=nginx
+  132  kubectl get pod
+  133  kubectl set image deployment my-deploy-nginx myapp=httpd
+  134  kubectl rollout status deployment my-deploy-nginx 
+  135  kubectl get pod
+  136  kubectl rollout status deployment my-deploy-nginx 
+  137  kubectl rollout undo deployment my-deploy-nginx 
+  138  kubectl rollout status deployment my-deploy-nginx 
+  139  kubectl get pod
+  140  kubectl set image deployment my-deploy-nginx myapp=http
+  141  kubectl rollout status deployment my-deploy-nginx 
+  142  kubectl  get pod
+  143  kubectl set image deployment my-deploy-nginx myapp=http
+  144  kubectl  get pod
+  145  kubectl rollout status deployment my-deploy-nginx 
+  146  ssh node1
+  147  ssh node2
+  148  ssh node1
+  149  exit
+  150  kubectl get nodes
+  151  ssh node2
+  152  kubectl get nodes
+  153  ssh node1
+  154  kubectl get nodes
+  155  ls
+  156  ssh node1
+  157  vi deployment.yml
+  158  kubectl get pods
+  159  kubectl create -f deployment.yml 
+  160  vi deployment.yml
+  161  kubectl create -f deployment.yml 
+  162  vi deployment.yml
+  163  kubectl create -f deployment.yml 
+  164  vi deployment.yml
+  165  cat deploy.yml 
+  166  cat deployment.yml 
+  167  vi deployment.yml
+  168  kubectl create -f deployment.yml 
+  169  vi deployment.yml
+  170  kubectl create -f deployment.yml 
+  171  kubectl get pod
+  172  cat deployment.yml 
+  173  kubectl get pod -l my-app
+  174  kubectl get deployments. -l my-app
+  175  kubectl get deployments -l my-app
+  176  kubectl get deployments 
+  177  kubectl describe deployments 
+  178  kubectl describe deployments  nginx-deploy 
+  179  kubectl get nodes
+  180  kubectl get pod nginx-deploy-7476f7df7f-7l22v -o wide
+  181  kubectl get deployments
+  182  kubectl describe pod
+  183  kubectl describe pod nginx-deploy-7476f7df7f-7l22v 
+  184  cat deployment.yml 
+  185  kubectl edit deployments nginx-deploy 
+  186  kubectl rollout status deployment nginx-deploy 
+  187  kubectl get pod
+  188  kubectl describe pod nginx-deploy-6cbb965997-2hhk9 
+  189  kubectl set image deployment nginx-deployment nginx=httpd
+  190  kubectl set image deployment nginx-deploy nginx=httpd
+  191  kubectl rollout status deployment nginx-deploy 
+  192  kubectl describe pod nginx-deploy-85fc7c556b-w22l8 
+  193  kubectl rollout history deployment nginx-deploy 
+  194  kubectl rollout undo deployment nginx-deploy 
+  195  kubectl rollout status deployment nginx-deploy 
+  196  kubectl describe pod nginx-deploy-6cbb965997-t4n6f 
+  197  kubectl rollout undo deployment nginx-deploy 
+  198  kubectl rollout history deployment nginx-deploy 
+  199  kubectl describe pod nginx-deploy-85fc7c556b-zjcs5 
+  200  kubectl set image deployment nginx-deploy nginx=alpine
+  201  kubectl rollout history deployment nginx-deploy 
+  202  kubectl rollout undo deployment nginx-deploy --revision=1
+  203  kubectl rollout undo deployment nginx-deploy --to-revision=1
+  204  kubectl describe deployments nginx-deploy 
+  205  kubectl rollout history deployment nginx-deploy 
+  206  history >> deployment.txt
